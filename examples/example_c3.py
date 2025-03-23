@@ -1,0 +1,1 @@
+# TODO: write example of separation of concerns base on example_b2.py
