@@ -1,5 +1,6 @@
 import os
 
+
 class CsvParserWithTotal:
     def __init__(self, file_path, sep, cols_to_sum):
         self.file_path = file_path
@@ -24,9 +25,8 @@ class CsvParserWithTotal:
             col_num += 1
         if self.line_num == 0:
             self.csv_dict["total"] = []
-            self.line_num += 1
-            return
-        self.csv_dict["total"].append(str(row_total))
+        else:
+            self.csv_dict["total"].append(str(row_total))
 
     def parse_csv(self, csv_lines):
         self.line_num = 0
@@ -35,12 +35,15 @@ class CsvParserWithTotal:
             line = line.strip("\n")
             if len(line) > 0:
                 self.parse_csv_line_to_dict(line)
+            self.line_num += 1
 
     def get_csv_dict_with_total(self):
         with open(self.file_path) as file:
             csv_lines = file.readlines()
             if len(csv_lines[0].split(self.sep)) > 1:
                 self.parse_csv(csv_lines)
+            else:
+                raise ValueError(f"csv_lines is not splittable using sep: '{self.sep}'")
         return self.csv_dict
 
 def main():
@@ -51,5 +54,7 @@ def main():
         csv_parser = CsvParserWithTotal(file_path, sep, cols_to_sum)
         csv_dict = csv_parser.get_csv_dict_with_total()
         print(csv_dict)
+    else:
+        raise FileNotFoundError(file_path)
 
 main()

@@ -1,5 +1,6 @@
 import os
 
+
 def parse_csv_line_to_dict(csv_dict, line, line_num, col_names, sep, cols_to_sum):
     col_num = 0
     row_total = 0
@@ -15,9 +16,8 @@ def parse_csv_line_to_dict(csv_dict, line, line_num, col_names, sep, cols_to_sum
         col_num += 1
     if line_num == 0:
         csv_dict["total"] = []
-        line_num += 1
-        return
-    csv_dict["total"].append(str(row_total))
+    else:
+        csv_dict["total"].append(str(row_total))
 
 
 def parse_csv(csv_lines, sep, cols_to_sum):
@@ -28,6 +28,7 @@ def parse_csv(csv_lines, sep, cols_to_sum):
         line = line.strip("\n")
         if len(line) > 0:
             parse_csv_line_to_dict(csv_dict, line, line_num, col_names, sep, cols_to_sum)
+        line_num += 1
 
     return csv_dict
 
@@ -38,7 +39,10 @@ def get_csv_dict_with_total(file_path, sep, cols_to_sum):
         csv_lines = file.readlines()
         if len(csv_lines[0].split(sep)) > 1:
             csv_dict = parse_csv(csv_lines, sep, cols_to_sum)
+        else:
+            raise ValueError(f"csv_lines is not splittable using sep: '{sep}'")
     return csv_dict
+
 
 def main():
     file_path = "./data/input.csv"
@@ -47,5 +51,7 @@ def main():
     if os.path.exists(file_path):
         csv_dict = get_csv_dict_with_total(file_path, sep, cols_to_sum)
         print(csv_dict)
+    else:
+        raise FileNotFoundError(file_path)
 
 main()

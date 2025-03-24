@@ -1,14 +1,14 @@
 import os
 
-def get_csv_dict_with_total(file_path, sep, cols_to_sum):
-    csv_dict = {}
 
+def get_csv_dict_with_total(file_path, sep, cols_to_sum):
     with open(file_path) as file:
-        csv_content = file.readlines()
-        if len(csv_content[0].split(sep)) > 1:
+        csv_lines = file.readlines()
+        if len(csv_lines[0].split(sep)) > 1:
+            csv_dict = {}
             line_num = 0
             col_names = []
-            for line in csv_content:
+            for line in csv_lines:
                 col_num = 0
                 line = line.strip("\n")
                 row_total = 0
@@ -25,9 +25,11 @@ def get_csv_dict_with_total(file_path, sep, cols_to_sum):
                         col_num += 1
                     if line_num == 0:
                         csv_dict["total"] = []
-                        line_num += 1
-                        continue
-                    csv_dict["total"].append(str(row_total))
+                    else:
+                        csv_dict["total"].append(str(row_total))
+                    line_num += 1
+        else:
+            raise ValueError(f"csv_lines is not splittable using sep: '{sep}'")
     return csv_dict
 
 def main():
@@ -37,5 +39,7 @@ def main():
     if os.path.exists(file_path):
         csv_dict = get_csv_dict_with_total(file_path, sep, cols_to_sum)
         print(csv_dict)
+    else:
+        raise FileNotFoundError(file_path)
 
 main()
