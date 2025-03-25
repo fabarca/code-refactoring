@@ -1,3 +1,21 @@
+"""
+Based on example_a4.py
+
+Cognitive Complexity: 7
+
+Changes:
+- create a class CsvParserWithTotal that wraps the 3 functions and reduce the number of arguments by using
+  internal attributes
+
+Notes:
+- Cognitive complexity metric didn't change
+- In this case cognitive load is actually higher than in the previous example:
+    - an extra hidden method __init__() that contains mutable attributes
+    - the class methods rely on state of attributes, which makes the class difficult to test (we need to reproduce
+      an internal state for testing or debugging)
+
+"""
+
 import os
 
 

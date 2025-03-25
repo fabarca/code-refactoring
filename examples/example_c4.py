@@ -1,3 +1,18 @@
+"""
+Based on example_c3.py
+
+Cognitive Complexity: 7
+
+Changes:
+- Wrap each step in a function
+
+Notes:
+- Functional programming:
+    - the code now is easier to read and maintain because steps are coded on independent functions
+    - functions don't mutate inputs, so they are easier to test
+
+"""
+
 import os
 
 

@@ -1,3 +1,13 @@
+"""
+Based on example_a1.py
+
+Cognitive Complexity: 26
+
+Changes:
+- move code inside if from main() to get_csv_dict_with_total()
+
+"""
+
 import os
 
 

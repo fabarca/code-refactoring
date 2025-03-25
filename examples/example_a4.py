@@ -1,3 +1,18 @@
+"""
+Based on example_a3.py
+
+Cognitive Complexity: 7
+
+Changes:
+- move code that parse the lines of csv from parse_csv() to parse_csv_line_to_dict()
+
+Notes:
+- The separation of the code that parse the lines seems artificial:
+    - it needs a several arguments
+    - it needs to mutate a dictonary in place without return
+
+"""
+
 import os
 
 

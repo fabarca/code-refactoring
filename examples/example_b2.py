@@ -1,4 +1,14 @@
-# Based on example_a1.py
+"""
+Based on example_a1.py
+
+Cognitive Complexity: 11
+
+Changes:
+- reduce nested logics
+- change check if-else to only if
+
+"""
+
 import os
 
 

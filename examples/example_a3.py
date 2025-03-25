@@ -1,3 +1,13 @@
+"""
+Based on example_a2.py
+
+Cognitive Complexity: 18
+
+Changes:
+- move code that parse the csv from get_csv_dict_with_total() to parse_csv()
+
+"""
+
 import os
 
 

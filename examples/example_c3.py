@@ -1,4 +1,19 @@
-# Based on example_b2.py
+"""
+Based on example_b2.py
+
+Cognitive Complexity: 11
+
+Changes:
+- apply separation of concerns:
+    - read file
+    - parse csv lines to a dict
+    - process csv dict
+
+Notes:
+- Cognitive complexity metric didn't change, but the code now is easier to read because steps are explicitly separated
+
+"""
+
 import os
 
 

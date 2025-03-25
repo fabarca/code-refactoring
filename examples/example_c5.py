@@ -1,3 +1,22 @@
+"""
+Based on example_c4.py
+
+Cognitive Complexity: 7
+
+Changes:
+- Create a simple class that allows to read and process a csv based on defined steps
+
+Notes:
+- This is an example only for didactic purposes, with a single use of the class, it is actually over-engineering
+- Cognitive load increase because of the new class (even if the class is very simple)
+- Cognitive complexity metric didn't change
+- Composition:
+    - the new class allows to build a csv processor by composition
+    - it could be helpful if we need to reuse a complex pipeline in several places, modifying only one step at a time
+    - in this example is based on duck typing, it could be more robust if we use python protocols
+
+"""
+
 import os
 
 

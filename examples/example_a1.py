@@ -1,3 +1,10 @@
+"""
+Example with high code complexity
+
+Cognitive Complexity: 35
+
+"""
+
 import os
 
 
